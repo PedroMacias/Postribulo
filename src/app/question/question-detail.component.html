@@ -1,1 +1,48 @@
-Una nueva pregunta
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar>
+      <i mat-list-icon class= "{{question.icon}} icon"></i>
+    </div>
+    <mat-card-title>
+      <h2>{{question.title}}</h2>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <small>Pedro Macias - {{question.createdAt | amLocale: 'en' | amTimeAgo}}</small>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{question.description}}</p>
+  </mat-card-content>
+</mat-card>
+<div class="answers">
+  <h3>Respuestas</h3>
+  <ul class="answers-list">
+    <li>
+      <h5>
+        Alex Cely
+        <small>{{question.createdAt | amLocale: 'en' | amTimeAgo}}</small>
+      </h5>
+      <p class="description">
+        I have the answers
+      </p>
+    </li>
+    <li>
+      <h5>
+        Alex Cely
+        <small>{{question.createdAt | amLocale: 'en' | amTimeAgo}}</small>
+      </h5>
+      <p class="description">
+        I have the answers
+      </p>
+    </li>
+    <li>
+      <h5>
+        Alex Cely
+        <small>{{question.createdAt | amLocale: 'en' | amTimeAgo}}</small>
+      </h5>
+      <p class="description">
+        I have the answers
+      </p>
+    </li>
+  </ul>
+</div>
