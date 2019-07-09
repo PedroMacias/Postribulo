@@ -16,36 +16,18 @@
 </mat-card>
 <div class="answers">
   <h3>Respuestas</h3>
-  <ul class="answers-list" *ngIf="question.answers.lenght > 0">
-    <li>
+  <ul class="answers-list" *ngIf="question.answers.length > 0">
+    <li *ngFor="let answer of question.answers">
       <h5>
-        Alex Cely
-        <small>{{question.createdAt | amLocale: 'en' | amTimeAgo}}</small>
+        {{ answer.user.firstName }} {{ answer.user.lastName }}
+        <small>{{answer.createdAt | amLocale: 'en' | amTimeAgo}}</small>
       </h5>
       <p class="description">
-        I have the answers
-      </p>
-    </li>
-    <li>
-      <h5>
-        Alex Cely
-        <small>{{question.createdAt | amLocale: 'en' | amTimeAgo}}</small>
-      </h5>
-      <p class="description">
-        I have the answers
-      </p>
-    </li>
-    <li>
-      <h5>
-        Alex Cely
-        <small>{{question.createdAt | amLocale: 'en' | amTimeAgo}}</small>
-      </h5>
-      <p class="description">
-        I have the answers
+        {{answer.description}}
       </p>
     </li>
   </ul>
-  <p *ngIf="question.answers.lenght !== 1 "> Be the first to answers this question</p>
+  <p *ngIf="question.answers.length === 0 "> Be the first to answers this question</p>
 
-  <app-answer-form class="answer-form"></app-answer-form>
+  <app-answer-form [question]="question" class="answer-form"></app-answer-form>
 </div>
