@@ -16,7 +16,7 @@
 </mat-card>
 <div class="answers">
   <h3>Respuestas</h3>
-  <ul class="answers-list">
+  <ul class="answers-list" *ngIf="question.answers.lenght > 0">
     <li>
       <h5>
         Alex Cely
@@ -45,5 +45,7 @@
       </p>
     </li>
   </ul>
+  <p *ngIf="question.answers.lenght !== 1 "> Be the first to answers this question</p>
+
   <app-answer-form></app-answer-form>
 </div>
