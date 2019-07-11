@@ -24,8 +24,8 @@ export class SignupScreenComponent implements OnInit {
 
 onSubmit() {
   if (this.signupForm.valid) {
-    const { firstName, lastName, email, password } = this.signupForm.value;
-    const user = new User(firstName, lastName, email, password);
+    const { email, password, firstName, lastName  } = this.signupForm.value;
+    const user = new User(email, password, firstName, lastName );
     console.log(user);
   }
 }

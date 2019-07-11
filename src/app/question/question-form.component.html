@@ -1,1 +1,22 @@
-question form
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Title"
+      name="title"
+      ngModel>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Description"
+      name="description"
+      ngModel>
+  </mat-form-field>
+  <mat-grid-list cols="3" rowHeight="3:2">
+    <mat-grid-tile *ngFor="let icon of icons">
+      <i mat-list-icon color="warn" class="devicon-{{ icon.name }}-{{ getIconVersion(icon) }} " ></i>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <button type="submit" name="submit-button" mat-raised-button color="accent">Send</button>
+</form>
