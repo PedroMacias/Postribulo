@@ -21,6 +21,9 @@ getQuestions(): Promise<void | Question[]> {
             .catch(this.handleError);
 }
 
-handleError() {
+handleError(error: any) {
+  const errMsg = error.message ? error.message :
+    error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+  console.log(errMsg);
 }
 }
