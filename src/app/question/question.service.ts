@@ -21,6 +21,14 @@ getQuestions(): Promise<void | Question[]> {
             .catch(this.handleError);
 }
 
+getQuestion(id): Promise<void | Question> {
+  const url = urljoin(this.questionsUrl, id);
+  return this.http.get(url)
+              .toPromise()
+              .then(response => JSON.parse(JSON.stringify(response as Question[])))
+              .catch(this.handleError);
+}
+
 handleError(error: any) {
   const errMsg = error.message ? error.message :
     error.status ? `${error.status} - ${error.statusText}` : 'Server error';
