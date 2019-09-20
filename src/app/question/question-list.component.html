@@ -1,3 +1,5 @@
+<mat-spinner *ngIf="loadging"></mat-spinner>
+<div *ngIf="!loadging">
 <mat-list>
   <mat-list-item *ngFor="let question of questions" [routerLink]="['questions', question._id]">
     <i *ngIf="question.icon === 'none'" mat-list-icon class="material-icons">help</i>
@@ -9,3 +11,4 @@
   </mat-list-item>
 </mat-list>
 <button [routerLink]="['questions/new']" mat-fab class="add-question" color="accent">+</button>
+</div>

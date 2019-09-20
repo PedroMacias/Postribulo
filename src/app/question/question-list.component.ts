@@ -36,6 +36,7 @@ export class QuestionListComponent implements OnInit {
           .getQuestions()
           .subscribe(res => {
               this.questions = res;
+              this.loadging = false;
           });
   }
 }
