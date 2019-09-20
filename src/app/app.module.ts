@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Material Angular
@@ -15,6 +16,7 @@ import { SigninScreenComponent } from './auth/signin-screen.component';
 import { SignupScreenComponent } from './auth/signup-screen.component';
 import { QuestionListComponent } from './question/question-list.component';
 import { QuestionFormComponent } from './question/question-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MomentModule } from 'angular2-moment';
 
@@ -32,12 +34,14 @@ import { Routing } from './app.routing';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     MomentModule,
     FormsModule,
     ReactiveFormsModule,
-    Routing
+    Routing,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

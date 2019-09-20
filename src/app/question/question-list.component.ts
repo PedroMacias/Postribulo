@@ -1,12 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Question } from './question.model';
-
-const q = new Question(
-  'How do I reuse a component in Android?',
-  'look, I have this problem...',
-  new Date(),
-  'devicon-android-plain'
-);
+import { QuestionService } from './question.service';
 
 @Component({
   selector: 'app-question-list',
@@ -28,8 +22,20 @@ const q = new Question(
     right: 30px;
     font-size: 28px;
     }
-  `]
+  `],
+  providers: [QuestionService]
 })
-export class QuestionListComponent {
-  questions: Question[] = new Array(10).fill(q);
+export class QuestionListComponent implements OnInit {
+  constructor(private questionService: QuestionService) {}
+
+  questions: Question[];
+  loadging = true;
+
+  ngOnInit() {
+      this.questionService
+          .getQuestions()
+          .subscribe(res => {
+              this.questions = res;
+          });
+  }
 }

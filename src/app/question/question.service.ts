@@ -3,7 +3,8 @@ import { Question } from './question.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import urljoin from 'url-join';
-import 'rcjs/add/operator/toPromise';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class QuestionService {
@@ -14,19 +15,23 @@ constructor(private http: HttpClient) {
   this.questionsUrl = urljoin(environment.apiUrl, 'questions');
 }
 
-getQuestions(): Promise<void | Question[]> {
+getQuestions(): Observable<Question[]>  {
   return this.http.get(this.questionsUrl)
-            .toPromise()
-            .then(response => JSON.parse(JSON.stringify(response as Question[])))
-            .catch(this.handleError);
+            .pipe(
+                map( res => {
+                    return res as Question[];
+                })
+            );
 }
 
-getQuestion(id): Promise<void | Question> {
-  const url = urljoin(this.questionsUrl, id);
-  return this.http.get(url)
-              .toPromise()
-              .then(response => JSON.parse(JSON.stringify(response as Question[])))
-              .catch(this.handleError);
+getQuestion(id): Observable<Question[]> {
+    const url = urljoin(this.questionsUrl, id);
+    return this.http.get(url)
+        .pipe(
+            map( res => {
+                return res as Question[];
+            })
+        );
 }
 
 handleError(error: any) {
